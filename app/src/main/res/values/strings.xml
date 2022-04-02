@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Hitung Kecepatan</string>
+    <string name="header">BMI, atau Body Mass Index merupakan cara untuk menentukan apakah berat \
+        badanmu ideal atau tidak. Cobalah sekarang!</string>
+    <string name="jarak_tempuh">Jarak tempuh (km)</string>
+    <string name="waktu_tempuh">Waktu tempuh (menit)</string>
+    <string name="hitung">Hitung</string>
+    <string name="reset">Reset</string>
+    <string name="hasil">%1$s</string>
 </resources>
