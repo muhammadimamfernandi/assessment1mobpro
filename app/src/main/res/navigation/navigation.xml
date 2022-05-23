@@ -7,15 +7,23 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="org.d3if2041.hitungkecepatan.ui.HomeFragment"
-        android:label="fragment_home"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_kecepatanFragment4"
             app:destination="@id/kecepatanFragment4" />
+        <action
+            android:id="@+id/action_homeFragment_to_balokFragment"
+            app:destination="@id/balokFragment" />
     </fragment>
     <fragment
         android:id="@+id/kecepatanFragment4"
         android:name="org.d3if2041.hitungkecepatan.ui.KecepatanFragment"
-        android:label="fragment_kecepatan"
+        android:label="@string/kecepatan_header"
         tools:layout="@layout/fragment_kecepatan" />
+    <fragment
+        android:id="@+id/balokFragment"
+        android:name="org.d3if2041.hitungkecepatan.ui.BalokFragment"
+        android:label="@string/balok_header"
+        tools:layout="@layout/fragment_balok" />
 </navigation>

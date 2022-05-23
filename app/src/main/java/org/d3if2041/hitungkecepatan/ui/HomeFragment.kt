@@ -29,5 +29,11 @@ class HomeFragment : Fragment() {
                 R.id.action_homeFragment_to_kecepatanFragment4
             )
         }
+
+        binding.balokButton.setOnClickListener {
+            it.findNavController().navigate(
+                R.id.action_homeFragment_to_balokFragment
+            )
+        }
     }
 }

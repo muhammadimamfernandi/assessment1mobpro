@@ -1,12 +1,13 @@
 <resources>
-    <string name="app_name">Hitung Kecepatan</string>
-    <string name="header">Kalkulator Kecepatam \nRumus Menghitung Kecepatan (Jarak dibagi Waktu)</string>
+    <string name="app_name">App Berhitung</string>
+
+    <string name="kecepatan_header">Hitung Kecepatan</string>
+    <string name="header">Kalkulator Kecepatan \nRumus Menghitung Kecepatan (Jarak / Waktu)</string>
     <string name="jarak_tempuh">Jarak tempuh (km)</string>
     <string name="waktu_tempuh">Waktu tempuh (jam)</string>
     <string name="hitung">Hitung</string>
     <string name="reset">Reset</string>
     <string name="hasil">%1$s km/jam</string>
-
     <string name="jarak_invalid">Jarak tidak boleh kosong.</string>
     <string name="waktu_invalid">Waktu tidak boleh kosong.</string>
 
@@ -14,7 +15,14 @@
     <string name="hitung_kecepatan">Hitung Kecepatan</string>
     <string name="balok">Hitung Volume Balok</string>
 
+    <string name="balok_header">Hitung Volume Balok</string>
     <string name="panjang">Panjang (cm)</string>
     <string name="lebar">Lebar (cm)</string>
     <string name="tinggi">Tinggi (cm)</string>
+    <string name="panjang_invalid">Panjang tidak boleh kosong.</string>
+    <string name="lebar_invalid">Lebar tidak boleh kosong.</string>
+    <string name="tinggi_invalid">Tinggi tidak boleh kosong.</string>
+    <string name="hasil_balok">%1$s (cm<sup>3</sup>)</string>
+    <string name="header_balok">Kalkulator Volume Balok \nRumus Menghitung Volume Balok
+        (Panjang x Lebar x Tinggi)</string>
 </resources>
