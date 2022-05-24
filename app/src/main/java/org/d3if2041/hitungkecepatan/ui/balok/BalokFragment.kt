@@ -3,12 +3,11 @@ package org.d3if2041.hitungkecepatan.ui.balok
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import org.d3if2041.hitungkecepatan.R
 import org.d3if2041.hitungkecepatan.databinding.FragmentBalokBinding
 import org.d3if2041.hitungkecepatan.db.BalokDb
@@ -38,12 +37,21 @@ class BalokFragment : Fragment() {
         binding.button.setOnClickListener { volume() }
         binding.resetButton.setOnClickListener { reset() }
         viewModel.getHasilBalok().observe(requireActivity(), { showResult(it) })
-
-        viewModel.data.observe(viewLifecycleOwner, {
-            if (it == null) return@observe
-            Log.d("BalokFragment", "Data tersimpan. ID = ${it.id}")
-        })
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        inflater.inflate(R.menu.histori_menu, menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if (item.itemId == R.id.menu_histori) {
+//            findNavController().navigate(
+//                R.id.action_balokFragment_to_historiBalokFragment)
+//            return true
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
     private fun volume() {
         val panjang = binding.panjangInp.text.toString()

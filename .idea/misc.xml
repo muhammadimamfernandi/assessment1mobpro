@@ -5,8 +5,13 @@
       <map>
         <entry key="..\:/Kuliah/HitungKecepatan/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Kuliah/HitungKecepatan/app/src/main/res/layout/fragment_balok.xml" value="0.1911231884057971" />
+        <entry key="..\:/Kuliah/HitungKecepatan/app/src/main/res/layout/fragment_histori_balok.xml" value="0.41865079365079366" />
+        <entry key="..\:/Kuliah/HitungKecepatan/app/src/main/res/layout/fragment_histori_kecepatan.xml" value="0.1911231884057971" />
         <entry key="..\:/Kuliah/HitungKecepatan/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Kuliah/HitungKecepatan/app/src/main/res/layout/fragment_kecepatan.xml" value="0.2" />
+        <entry key="..\:/Kuliah/HitungKecepatan/app/src/main/res/layout/histori_balok.xml" value="0.1911231884057971" />
+        <entry key="..\:/Kuliah/HitungKecepatan/app/src/main/res/layout/histori_kecepatan.xml" value="0.25" />
+        <entry key="..\:/Kuliah/HitungKecepatan/app/src/main/res/menu/histori_menu.xml" value="0.2" />
       </map>
     </option>
   </component>

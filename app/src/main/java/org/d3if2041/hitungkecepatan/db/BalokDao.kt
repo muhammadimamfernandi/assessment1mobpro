@@ -11,6 +11,6 @@ interface BalokDao {
     @Insert
     fun insert(balok: BalokEntity)
 
-    @Query("SELECT * FROM balok ORDER BY id LIMIT 1")
-    fun getLastBalok(): LiveData<BalokEntity?>
+    @Query("SELECT * FROM balok ORDER BY id")
+    fun getLastBalok(): LiveData<List<BalokEntity?>>
 }

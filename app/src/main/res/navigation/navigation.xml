@@ -20,10 +20,28 @@
         android:id="@+id/kecepatanFragment4"
         android:name="org.d3if2041.hitungkecepatan.ui.kecepatan.KecepatanFragment"
         android:label="@string/kecepatan_header"
-        tools:layout="@layout/fragment_kecepatan" />
+        tools:layout="@layout/fragment_kecepatan" >
+        <action
+            android:id="@+id/action_kecepatanFragment4_to_historiKecepatanFragment"
+            app:destination="@id/historiKecepatanFragment" />
+    </fragment>
     <fragment
         android:id="@+id/balokFragment"
         android:name="org.d3if2041.hitungkecepatan.ui.balok.BalokFragment"
         android:label="@string/balok_header"
-        tools:layout="@layout/fragment_balok" />
+        tools:layout="@layout/fragment_balok" >
+        <action
+            android:id="@+id/action_balokFragment_to_historiBalokFragment"
+            app:destination="@id/historiBalokFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historiKecepatanFragment"
+        android:name="org.d3if2041.hitungkecepatan.ui.histori.HistoriKecepatanFragment"
+        android:label="HistoriKecepatanFragment"
+        tools:layout="@layout/fragment_histori_kecepatan"/>
+    <fragment
+        android:id="@+id/historiBalokFragment"
+        android:name="org.d3if2041.hitungkecepatan.ui.histori.HistoriBalokFragment"
+        android:label="HistoriBalokFragment"
+        tools:layout="@layout/fragment_histori_balok"/>
 </navigation>

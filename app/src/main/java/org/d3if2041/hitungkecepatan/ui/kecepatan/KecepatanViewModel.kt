@@ -10,6 +10,7 @@ import kotlinx.coroutines.withContext
 import org.d3if2041.hitungkecepatan.db.KecepatanDao
 import org.d3if2041.hitungkecepatan.db.KecepatanEntity
 import org.d3if2041.hitungkecepatan.model.HasilKecepatan
+import org.d3if2041.hitungkecepatan.model.hitungKecepatan
 
 class KecepatanViewModel(private val db: KecepatanDao) : ViewModel() {
 
@@ -18,15 +19,14 @@ class KecepatanViewModel(private val db: KecepatanDao) : ViewModel() {
     val data = db.getLastKecepatan()
 
     fun hitungKecepatan(jarak: Float, waktu: Float) {
-        val kecepatan = jarak / waktu
-        hasilKecepatan.value = HasilKecepatan(kecepatan)
+        val dataKecepatan = KecepatanEntity(
+            jarak = jarak,
+            waktu = waktu
+        )
+        hasilKecepatan.value = dataKecepatan.hitungKecepatan()
 
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val dataKecepatan = KecepatanEntity(
-                    jarak = jarak,
-                    waktu = waktu
-                )
                 db.insert(dataKecepatan)
             }
         }

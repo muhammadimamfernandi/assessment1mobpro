@@ -3,20 +3,24 @@ package org.d3if2041.hitungkecepatan.ui.kecepatan
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.ListAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import org.d3if2041.hitungkecepatan.R
 import org.d3if2041.hitungkecepatan.databinding.FragmentKecepatanBinding
 import org.d3if2041.hitungkecepatan.db.KecepatanDb
 import org.d3if2041.hitungkecepatan.model.HasilKecepatan
+import org.d3if2041.hitungkecepatan.ui.histori.KecepatanAdapter
 
 class KecepatanFragment : Fragment() {
 
     private lateinit var binding: FragmentKecepatanBinding
+    private lateinit var myAdapter: KecepatanAdapter
 
     private val viewModel: KecepatanViewModel by lazy {
         val db = KecepatanDb.getInstance(requireContext())
@@ -38,12 +42,21 @@ class KecepatanFragment : Fragment() {
         binding.button.setOnClickListener { kecepatan() }
         binding.resetButton.setOnClickListener { reset() }
         viewModel.getHasilKecepatan().observe(requireActivity(), { showResult(it) })
-
-        viewModel.data.observe(viewLifecycleOwner, {
-            if (it == null) return@observe
-            Log.d("KecepatanFragment", "Data tersimpan. ID = ${it.id}")
-        })
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        inflater.inflate(R.menu.histori_menu, menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if (item.itemId == R.id.menu_histori) {
+//            findNavController().navigate(
+//                R.id.action_kecepatanFragment4_to_historiKecepatanFragment)
+//            return true
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
     private fun kecepatan() {
         val jarak = binding.jarakTempuhInp.text.toString()
