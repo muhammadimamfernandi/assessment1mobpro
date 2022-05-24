@@ -1,16 +1,17 @@
-package org.d3if2041.hitungkecepatan.ui
+package org.d3if2041.hitungkecepatan.ui.kecepatan
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import org.d3if2041.hitungkecepatan.KecepatanViewModel
 import org.d3if2041.hitungkecepatan.R
 import org.d3if2041.hitungkecepatan.databinding.FragmentKecepatanBinding
+import org.d3if2041.hitungkecepatan.db.KecepatanDb
 import org.d3if2041.hitungkecepatan.model.HasilKecepatan
 
 class KecepatanFragment : Fragment() {
@@ -18,7 +19,9 @@ class KecepatanFragment : Fragment() {
     private lateinit var binding: FragmentKecepatanBinding
 
     private val viewModel: KecepatanViewModel by lazy {
-        ViewModelProvider(requireActivity())[KecepatanViewModel::class.java]
+        val db = KecepatanDb.getInstance(requireContext())
+        val factory = KecepatanViewModelFactory(db.dao)
+        ViewModelProvider(this, factory)[KecepatanViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -35,6 +38,11 @@ class KecepatanFragment : Fragment() {
         binding.button.setOnClickListener { kecepatan() }
         binding.resetButton.setOnClickListener { reset() }
         viewModel.getHasilKecepatan().observe(requireActivity(), { showResult(it) })
+
+        viewModel.data.observe(viewLifecycleOwner, {
+            if (it == null) return@observe
+            Log.d("KecepatanFragment", "Data tersimpan. ID = ${it.id}")
+        })
     }
 
     private fun kecepatan() {

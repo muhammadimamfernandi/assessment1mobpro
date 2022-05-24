@@ -1,17 +1,17 @@
-package org.d3if2041.hitungkecepatan.ui
+package org.d3if2041.hitungkecepatan.ui.balok
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import org.d3if2041.hitungkecepatan.BalokViewModel
-import org.d3if2041.hitungkecepatan.KecepatanViewModel
 import org.d3if2041.hitungkecepatan.R
 import org.d3if2041.hitungkecepatan.databinding.FragmentBalokBinding
+import org.d3if2041.hitungkecepatan.db.BalokDb
 import org.d3if2041.hitungkecepatan.model.HasilBalok
 
 class BalokFragment : Fragment() {
@@ -19,7 +19,9 @@ class BalokFragment : Fragment() {
     private lateinit var binding: FragmentBalokBinding
 
     private val viewModel: BalokViewModel by lazy {
-        ViewModelProvider(requireActivity())[BalokViewModel::class.java]
+        val db = BalokDb.getInstance(requireContext())
+        val factory = BalokViewModelFactory(db.dao)
+        ViewModelProvider(this, factory)[BalokViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -36,6 +38,11 @@ class BalokFragment : Fragment() {
         binding.button.setOnClickListener { volume() }
         binding.resetButton.setOnClickListener { reset() }
         viewModel.getHasilBalok().observe(requireActivity(), { showResult(it) })
+
+        viewModel.data.observe(viewLifecycleOwner, {
+            if (it == null) return@observe
+            Log.d("BalokFragment", "Data tersimpan. ID = ${it.id}")
+        })
     }
 
     private fun volume() {
