@@ -7,12 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import org.d3if2041.hitungkecepatan.KecepatanViewModel
 import org.d3if2041.hitungkecepatan.R
 import org.d3if2041.hitungkecepatan.databinding.FragmentKecepatanBinding
+import org.d3if2041.hitungkecepatan.model.HasilKecepatan
 
 class KecepatanFragment : Fragment() {
 
     private lateinit var binding: FragmentKecepatanBinding
+
+    private val viewModel: KecepatanViewModel by lazy {
+        ViewModelProvider(requireActivity())[KecepatanViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +34,7 @@ class KecepatanFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.button.setOnClickListener { kecepatan() }
         binding.resetButton.setOnClickListener { reset() }
+        viewModel.getHasilKecepatan().observe(requireActivity(), { showResult(it) })
     }
 
     private fun kecepatan() {
@@ -42,8 +50,12 @@ class KecepatanFragment : Fragment() {
             return
         }
 
-        val kecepatan = jarak.toFloat() / waktu.toFloat();
-        binding.hasilTextView.text = getString(R.string.hasil, kecepatan.toString())
+        viewModel.hitungKecepatan(jarak.toFloat(), waktu.toFloat())
+    }
+
+    private fun showResult(result: HasilKecepatan?) {
+        if (result == null) return
+        binding.hasilTextView.text = getString(R.string.hasil, result.kecepatan.toString())
     }
 
     private fun reset() {
