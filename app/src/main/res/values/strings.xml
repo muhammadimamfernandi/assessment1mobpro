@@ -25,4 +25,7 @@
     <string name="hasil_balok">%1$s (cm<sup>3</sup>)</string>
     <string name="header_balok">Kalkulator Volume Balok \nRumus Menghitung Volume Balok
         (Panjang x Lebar x Tinggi)</string>
+
+    <string name="word_balok">Balok seperti %1$s</string>
+    <string name="word_kecepatan">Kecepatan seperti %1$s</string>
 </resources>
